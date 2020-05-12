@@ -323,6 +323,7 @@
 #pragma mark - RTCEAGLVideoViewDelegate
 
 - (void)videoView:(RTCEAGLVideoView *)videoView didChangeVideoSize:(CGSize)size {
+     dispatch_async(dispatch_get_main_queue(), ^{
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     [UIView animateWithDuration:0.4f animations:^{
         CGFloat containerWidth = self.view.frame.size.width;
@@ -371,6 +372,7 @@
         }
         [self.view layoutIfNeeded];
     }];
+         });
     
 }
 
